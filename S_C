@@ -1,0 +1,98 @@
+
+
+
+import pyxel
+
+pyxel.init(200, 120, fps=60)
+x_1: int = 31
+y_1: int = 90
+pv_1 :int = 100
+Shield_1: int = 0
+jump_1: int = 0
+velocyté_y1: float = 0
+
+x_2 :int = 170
+y_2 :int = 90
+pv_2 :int = 100
+Shield_2:int = 0
+velocyté_y2: float = 0
+jump_2: int = 0
+
+gravity: float = 0.5 #gravité
+
+def update():
+    global x_1, y_1, x_2, y_2, jump_1, jump_2, velocyté_y1, velocyté_y2 ,Shield_1 ,Shield_2 , gravity
+    
+    if jump_1 > 5 :                           #-------------------------------------
+        y_1 = y_1 - 5                         # phase 1 saut J1
+        jump_1 = jump_1 - 1                   #
+    elif jump_1 > 0 :                         # phase 2 saut J1
+        y_1 = y_1 - 2                         #
+        jump_1 = jump_1 - 1                   #
+    elif jump_1 == 0:                         # Gravité
+        velocyté_y1 = velocyté_y1 + gravity   #
+        y_1 = y_1 + velocyté_y1               #--------------------------------------
+
+    if y_1 >= 90 :               # limite du sol pour J1
+        y_1 = 90
+        velocyté_y1 = 0
+
+    if jump_2 > 5 :                           #-------------------------------------
+        y_2 = y_2 - 5                         # phase 1 saut J2
+        jump_2 = jump_2 - 1                   #
+    elif jump_2 > 0 :                         # phase 2 saut J2
+        y_2 = y_2 - 2                         #
+        jump_2 = jump_2 - 1                   #
+    elif jump_2 == 0:                         # Gravité
+        velocyté_y2 = velocyté_y2 + gravity   #
+        y_2 =  y_2 + velocyté_y2              #--------------------------------------
+
+    if y_2 >= 90 :               # limite du sol pour J2
+        y_2 = 90
+        velocyté_y2 = 0
+    
+
+    if pyxel.btnp(pyxel.KEY_Z) and (jump_1 == 0)and (velocyté_y1 == 0):
+        y_1 = y_1 - 10
+        jump_1 = 10 
+
+    if pyxel.btn(pyxel.KEY_C):
+        Shield_1 = 2
+    if Shield_1 != 0 :
+        Shield_1 = Shield_1 - 1
+
+    if pyxel.btn(pyxel.KEY_D) and x_1 + 1 < 190:                    
+        x_1 = x_1 + 3
+    if pyxel.btn(pyxel.KEY_Q) and x_1 - 1 > 2:
+        x_1 = x_1 - 3
+    
+    
+    if pyxel.btn(pyxel.KEY_L):
+        Shield_2 = 2
+    if Shield_2 != 0 :
+        Shield_2 = Shield_2 - 1
+    if pyxel.btnp(pyxel.KEY_UP) and (jump_2 == 0)and (velocyté_y2 == 0):
+        y_2 = y_2 - 10
+        jump_2 = 10
+    
+    if pyxel.btn(pyxel.KEY_RIGHT) and x_2 + 1 < 190:
+        x_2 = x_2 + 3
+    if pyxel.btn(pyxel.KEY_LEFT) and x_2 - 1 > 2:
+        x_2 = x_2 - 3
+    
+
+
+def draw() -> None:
+    global x_1, y_1, x_2, y_2, jump_1, jump_2, velocyté_y1, velocyté_y2 ,Crouch_1 ,Crouch_2 , gravity
+    pyxel.cls(5)
+    pyxel.rect(0, 100, 200, 20, 0)
+    pyxel.rect(0, 100, 200, 20, 4)
+    pyxel.rect(0, 100, 200, 3, 9)
+    pyxel.rect(x_1, y_1, 6, 12, 7)
+    if Shield_1 !=0 :
+        pyxel.circb(x_1 + 2, y_1 + 4, 8, 3)
+    pyxel.rect(x_2, y_2,6, 12, 8)
+    if Shield_2 !=0 :
+        pyxel.circb(x_2 + 2, y_2 + 4, 8, 14)
+    pyxel.bltm(60, 120, 0, 0, 0, 7, 7, 0)
+pyxel.run(update, draw)
