@@ -1,0 +1,292 @@
+import pyxel
+import random
+pyxel.init(210, 120, fps=20)
+pyxel.load("STF_v1.pyxres", False, False, False, False)
+#pyxel.load("STF_v1.pyxres")
+point_1:int =0
+x_1: int = 31
+y_1: int = 90
+pv_1 :int = 100
+Shield_1: int = 0
+jump_1: int = 0
+velocyté_y1: float = 0
+punch_1: int = 0
+dx_1 : str = "right"
+dy_1 : str = "neutral"
+att_1 : str = " "
+vulnerable_1 : int = 0
+direction_1: tuple [str : str] = ( dx_1 , dy_1)
+
+def attack_1 ( x_1, y_1, direction_1):
+    global x_2, y_2, vulnerable_2, pv_2
+    direction_1 = (dx_1,dy_1)
+    if direction_1 == ("right","neutral"):
+        pyxel.rectb(x_1 + 7, y_1  , 15, 13, 0)
+        if ((x_1 +7)< (x_2 + 7) and (x_1 + 22) > x_2 and y_1 < (y_2 + 13) and (y_1 + 13) > y_2) :
+            if vulnerable_2 == 0 :
+                vulnerable_2 = 5
+                pv_2 = pv_2 - random.randint(10, 25)
+                if x_2 < 200 :
+                    x_2 = x_2 + 5
+    if direction_1 == ("right", "up"):
+        pyxel.rectb(x_1 - 3, y_1 - 15, 13, 15, 0)
+        if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1-15) <(y_2 + 13) and y_1  > y_2) :
+            if vulnerable_2 == 0 :
+                vulnerable_2 = 5
+                pv_2 = pv_2 - random.randint(10, 20)
+                y_2 = y_2 - 5
+    if direction_1 == ("right", "down"):
+        pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0)
+        if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1 + 13) <(y_2 + 13) and (y_1 + 30)  > y_2) :
+            if vulnerable_2 == 0 :
+                vulnerable_2 = 5
+                pv_2 = pv_2 - random.randint(15, 30)
+    if direction_1 == ("left", "neutral"):
+        pyxel.rectb(x_1 - 15, y_1  , 15, 13, 0)
+        if ( (x_1-15) < (x_2 +7 ) and x_1 > x_2 and y_1 < (y_2 + 13) and (y_1 + 13) > y_2) :
+            if vulnerable_2 == 0 :
+                vulnerable_2 = 5
+                pv_2 = pv_2 - random.randint(10, 25)
+                if x_2 > 3 :
+                    x_2 = x_2 - 5
+    if direction_1 == ("left", "up"):
+        pyxel.rectb(x_1-3, y_1 - 15, 13,15, 0)
+        if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1-15) <(y_2 + 13) and y_1  > y_2) :
+            print ("?")
+    if direction_1 == ("left", "down"):
+        pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0)
+        if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1 + 13) <(y_2 + 13) and (y_1 + 30)  > y_2) :
+            if vulnerable_2 == 0 :
+                vulnerable_2 = 5
+                pv_2 = pv_2 - random.randint(15, 30)
+    
+point_2:int = 0 
+x_2 :int = 186
+y_2 :int = 90
+pv_2 :int = 100
+Shield_2:int = 0
+velocyté_y2: float = 0
+jump_2: int = 0
+punch_2: int = 0
+dx_2 : str = "left"
+dy_2 : str = "neutral"
+att_2 : str = " "
+direction_2: tuple [str : str] = ( dx_2 , dy_2)
+vulnerable_2: int = 0
+
+def attack_2(x_2, y_2, direction_2):
+    global x_1, y_1,vulnerable_1, pv_1
+    direction_2 = (dx_2, dy_2)   
+    if direction_2 == ("right", "neutral"):
+        pyxel.rectb(x_2 + 7, y_2, 15, 13, 0)
+        if ((x_2 + 7) < (x_1 + 7) and (x_2 + 22) > x_1 and y_2 < (y_1 + 13) and (y_2 + 13) > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(10, 25)
+                if x_1 < 200 :
+                    x_1 = x_1 + 5
+    if direction_2 == ("right", "up"):
+        pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0)
+        if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 - 15) < (y_1 + 13) and y_2 > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(10, 20)
+                y_1 = y_1 - 5  
+    if direction_2 == ("right", "down"):
+        pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0)
+        if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 + 13) < (y_1 + 13) and (y_2 + 30) > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(15, 30)    
+    if direction_2 == ("left", "neutral"):
+        pyxel.rectb(x_2 - 15, y_2, 15, 13, 0)
+        if ((x_2 - 15) < (x_1 + 7) and x_2 > x_1 and y_2 < (y_1 + 13) and (y_2 + 13) > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(10, 25)
+                if x_1 > 3 :
+                    x_1 = x_1 - 5   
+    if direction_2 == ("left", "up"):
+        pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0)
+        if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 - 15) < (y_1 + 13) and y_2 > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(10, 20)
+                y_1 = y_1 - 5    
+    if direction_2 == ("left", "down"):
+        pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0)
+        if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 + 13) < (y_1 + 13) and (y_2 + 30) > y_1):
+            if vulnerable_1 == 0 :
+                vulnerable_1 = 5
+                pv_1 = pv_1 - random.randint(15, 30)
+    
+
+gravity: float = 0.5 #gravité
+
+
+
+
+
+def update():
+    global x_1, y_1,direction_1, dx_1, dy_1, att_1, punch_1, jump_1, velocyté_y1, Shield_1, vulnerable_1, pv_1, point_1, x_2, y_2, direction_2, dx_2, dy_2, att_2, punch_2, jump_2, velocyté_y2, Shield_2,vulnerable_2, pv_2, point_2, gravity
+    
+    if jump_1 > 5 :                           #-------------------------------------
+        y_1 = y_1 - 5                         # phase 1 saut J1
+        jump_1 = jump_1 - 1                   #
+    elif jump_1 > 0 :                         # phase 2 saut J1
+        y_1 = y_1 - 2                         #
+        jump_1 = jump_1 - 1                   #
+    elif jump_1 == 0:                         # Gravité
+        velocyté_y1 = velocyté_y1 + gravity   #
+        y_1 = y_1 + velocyté_y1               #--------------------------------------
+
+    if y_1 >= 90 :               # limite du sole pour J1
+        y_1 = 90
+        velocyté_y1 = 0
+
+    if jump_2 > 5 :              #-------------------------------------
+        y_2 = y_2 - 5            # phase 1 saut J2
+        jump_2 = jump_2 - 1      #
+    elif jump_2 > 0 :            # phase 2 saut J2
+        y_2 = y_2 - 2            #
+        jump_2 = jump_2 - 1      #
+    elif jump_2 == 0:            # Gravité
+        velocyté_y2 += gravity   #
+        y_2 += velocyté_y2      #--------------------------------------
+
+    if y_2 >= 90 :               # limite du sole pour J2
+        y_2 = 90
+        velocyté_y2 = 0
+    
+
+    if pyxel.btnp(pyxel.KEY_X) and (jump_1 == 0)and (velocyté_y1 == 0):
+        y_1 = y_1 - 10
+        jump_1 = 10 
+
+    if pyxel.btn(pyxel.KEY_C):
+        Shield_1 = 2
+    if Shield_1 != 0 :
+        Shield_1 = Shield_1 - 1
+
+    if pyxel.btn(pyxel.KEY_D) and x_1 + 1 < 200:                    
+        x_1 = x_1 + 3
+        dx_1 = "right"
+    if pyxel.btn(pyxel.KEY_Q) and x_1 - 1 > 3 :
+        x_1 = x_1 - 3
+        dx_1 = "left"
+    if pyxel.btn(pyxel.KEY_Z):
+        dy_1 = "up"
+    elif pyxel.btn(pyxel.KEY_S) and y_1 < 90:
+        dy_1 = "down"
+    else :
+        dy_1 = "neutral"
+
+    if pyxel.btnp(pyxel.KEY_V) and punch_1 == 0:
+        attack_1(x_1,y_1,direction_1)
+        punch_1 = 5
+        #if att_1 == 
+    if punch_1 != 0 :
+        punch_1 = punch_1 - 1
+    if vulnerable_1 > 0 :
+        vulnerable_1 = vulnerable_1 - 1
+    if vulnerable_2 > 0 :
+        vulnerable_2 = vulnerable_2 - 1
+
+
+    
+    if pyxel.btn(pyxel.KEY_L):
+        Shield_2 = 2
+    if Shield_2 != 0 :
+        Shield_2 = Shield_2 - 1
+    if pyxel.btnp(pyxel.KEY_K) and (jump_2 == 0)and (velocyté_y2 == 0):
+        y_2 = y_2 - 10
+        jump_2 = 10
+    
+    if pyxel.btn(pyxel.KEY_RIGHT) and x_2 + 1 < 200:
+        x_2 = x_2 + 3
+        dx_2 = "right"
+    if pyxel.btn(pyxel.KEY_LEFT) and x_2 - 1 > 2:
+        x_2 = x_2 - 3
+        dx_2 = "left"
+    
+    if pyxel.btn(pyxel.KEY_UP):
+        dy_2 = "up"
+    elif pyxel.btn(pyxel.KEY_DOWN) and y_2 < 90:
+        dy_2 = "down"
+    else :
+        dy_2 = "neutral"
+
+    if pyxel.btnp(pyxel.KEY_M) and punch_2 == 0:
+        attack_1(x_2,y_2,direction_2)
+        punch_2 = 5
+        if att_2 == pyxel.rect(x_1, y_1, 7, 13, 7) :
+            print ("!")
+    if punch_2 != 0 :
+        punch_2 = punch_2 - 1
+
+    if pv_1 <= 0 or pv_2 <= 0 :
+        x_1 = 31
+        y_1 = 30
+        x_2 = 186
+        y_2 = 30
+        if pv_1 <= 0 :
+            pv_1 = 100
+            point_2 = point_2 + 1 
+        elif pv_2 <= 0 :
+            pv_2 =100    
+            point_1 = point_1 + 1
+
+def draw() -> None:
+    global x_1, y_1,direction_1, dx_1, dy_1, att_1, punch_1, jump_1, velocyté_y1, Shield_1, vulnerable_1, pv_1, point_1, x_2, y_2, direction_2, dx_2, dy_2, att_2, punch_2, jump_2, velocyté_y2, Shield_2,vulnerable_2, pv_2, point_2, gravity
+    pyxel.cls(5)
+    pyxel.rect(0, 100, 210, 20, 4)
+    pyxel.rect(0, 100, 210, 3, 9)
+    
+    pyxel.rectb(94,10, 6, 6, 6)
+    pyxel.rectb(102,10, 6, 6, 6)
+    pyxel.rectb(110,10, 6, 6, 6)
+
+    if point_1 >= 1 :
+        pyxel.rect(95, 11, 4, 4, 7)
+    if point_2 >= 1 :
+        pyxel.rect(111, 11, 4, 4, 8)
+    if point_1 == 2 :
+        pyxel.rect(103,11,4,4,7)
+        pyxel.text(184,50,"K.O", 8)
+        pyxel.text(19,50,"Victoire", 7)
+    if point_2 == 2 :
+        pyxel.rect(103,11,4,4,8)
+        pyxel.text(174,50,"Victoire", 8)
+        pyxel.text(30,50,"K.O", 7)
+    if point_1 == 2 or point_2 == 2 :
+        x_1 = 31
+        x_2 = 186
+        pyxel.text(44,100,"Appuiez sur 'Espace' pour relancer", 0)
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            point_1 = 0
+            point_2 = 0
+    
+    if Shield_1 !=0 :
+        pyxel.circb(x_1 + 2, y_1 + 4, 8, 3)
+    if punch_1 > 0 :
+        attack_1(x_1,y_1,direction_1)
+    pyxel.rect(x_1, y_1, 7, 13, 7)                  # joueur 1
+    
+    
+    if punch_2 > 0 :
+        attack_2(x_2,y_2,direction_2)
+    if Shield_2 !=0 :
+        pyxel.circb(x_2 + 2, y_2 + 4, 8, 14)
+    pyxel.rect(x_2, y_2,7, 13, 8)                  # joueur 2
+    
+    pyxel.rectb( 2, 2, 102, 6, 6)
+    pyxel.rect( 3, 3, 100, 4, 8)
+    pyxel.rect( 3, 3, pv_1 , 4, 11)
+    pyxel.rectb( 106, 2, 102, 6, 6)
+    pyxel.rect( 107, 3, 100, 4, 8)
+    pyxel.rect( 107, 3, pv_2, 4, 11)
+
+    #pyxel.bltm(60, 120, 0, 0, 0, 7, 7, 0)
+    #pyxel.images[0].load(0, 0,STF_v1.pyxres)
+    #pyxel.blt(100,500,STF_v1.pyxres,0,0,7,7)
+pyxel.run(update, draw)
