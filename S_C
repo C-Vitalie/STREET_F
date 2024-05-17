@@ -27,7 +27,7 @@ def attack_1 ( x_1, y_1, direction_1):
     global x_2, y_2, vulnerable_2, pv_2, jump_1, velocyté_y1
     direction_1 = (dx_1,dy_1)
     if direction_1 == ("right","neutral"):
-        #pyxel.rectb(x_1 + 7, y_1  , 15, 13, 0) # hit boxe de l'attaque ver la droite 
+        pyxel.rectb(x_1 + 7, y_1  , 15, 13, 0) # hit boxe de l'attaque ver la droite 
         if punch_1 < 3:
             pyxel.blt(x_1, y_1, 0, 0, 48, 7, 13,0)
         elif punch_1 < 2:
@@ -41,14 +41,14 @@ def attack_1 ( x_1, y_1, direction_1):
                 if x_2 < 200 :
                     x_2 = x_2 + 5
     if direction_1 == ("right", "up"):
-        #pyxel.rectb(x_1 - 3, y_1 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
+        pyxel.rectb(x_1 - 3, y_1 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
         if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1-15) <(y_2 + 13) and y_1  > y_2) :
             if vulnerable_2 == 0 :
                 vulnerable_2 = 5
                 pv_2 = pv_2 - random.randint(10, 20)
                 y_2 = y_2 - 5
     if direction_1 == ("right", "down"):
-        #pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0) # hit boxe de l'attaque ver le bas
+        pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0) # hit boxe de l'attaque ver le bas
         if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1 + 13) <(y_2 + 13) and (y_1 + 30)  > y_2) :
             if vulnerable_2 == 0 :
                 vulnerable_2 = 5
@@ -56,7 +56,7 @@ def attack_1 ( x_1, y_1, direction_1):
                 jump_1 = 10
                 velocyté_y1 = 0
     if direction_1 == ("left", "neutral"): 
-        #pyxel.rectb(x_1 - 15, y_1  , 15, 13, 0) # hit boxe de l'attaque ver la gauche
+        pyxel.rectb(x_1 - 15, y_1  , 15, 13, 0) # hit boxe de l'attaque ver la gauche
         if ( (x_1-15) < (x_2 +7 ) and x_1 > x_2 and y_1 < (y_2 + 13) and (y_1 + 13) > y_2) :
             if vulnerable_2 == 0 :
                 vulnerable_2 = 5
@@ -64,14 +64,14 @@ def attack_1 ( x_1, y_1, direction_1):
                 if x_2 > 3 :
                     x_2 = x_2 - 5
     if direction_1 == ("left", "up"):
-        #pyxel.rectb(x_1-3, y_1 - 15, 13,15, 0) # hit boxe de l'attaque ver le haut
+        pyxel.rectb(x_1-3, y_1 - 15, 13,15, 0) # hit boxe de l'attaque ver le haut
         if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1-15) <(y_2 + 13) and y_1  > y_2) :
             if vulnerable_2 == 0 :
                 vulnerable_2 = 5
                 pv_2 = pv_2 - random.randint(10, 20)
                 y_2 = y_2 - 5
     if direction_1 == ("left", "down"):
-        #pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0) # hit boxe de l'attaque ver le bas
+        pyxel.rectb(x_1-3, y_1 + 15, 13,17, 0) # hit boxe de l'attaque ver le bas
         if ((x_1 - 3) < (x_2 + 7) and (x_1 + 13) > x_2 and (y_1 + 13) <(y_2 + 13) and (y_1 + 30)  > y_2) :
             if vulnerable_2 == 0 :
                 vulnerable_2 = 5
@@ -98,7 +98,7 @@ def attack_2(x_2, y_2, direction_2):
     global x_1, y_1,vulnerable_1, pv_1, jump_2, velocyté_y2
     direction_2 = (dx_2, dy_2)   
     if direction_2 == ("right", "neutral"):
-        #pyxel.rectb(x_2 + 7, y_2, 15, 13, 0) # hit boxe de l'attaque ver la droite 
+        pyxel.rectb(x_2 + 7, y_2, 15, 13, 0) # hit boxe de l'attaque ver la droite 
         if ((x_2 + 7) < (x_1 + 7) and (x_2 + 22) > x_1 and y_2 < (y_1 + 13) and (y_2 + 13) > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
@@ -106,14 +106,14 @@ def attack_2(x_2, y_2, direction_2):
                 if x_1 < 200 :
                     x_1 = x_1 + 5
     if direction_2 == ("right", "up"):
-        #pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
+        pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
         if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 - 15) < (y_1 + 13) and y_2 > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
                 pv_1 = pv_1 - random.randint(10, 20)
                 y_1 = y_1 - 5  
     if direction_2 == ("right", "down"):
-        #pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0) # hit boxe de l'attaque ver le bas
+        pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0) # hit boxe de l'attaque ver le bas
         if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 + 13) < (y_1 + 13) and (y_2 + 30) > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
@@ -121,7 +121,7 @@ def attack_2(x_2, y_2, direction_2):
                 jump_2 = 10 
                 velocyté_y2 =0    
     if direction_2 == ("left", "neutral"): 
-        #pyxel.rectb(x_2 - 15, y_2, 15, 13, 0) # hit boxe de l'attaque ver la gauche
+        pyxel.rectb(x_2 - 15, y_2, 15, 13, 0) # hit boxe de l'attaque ver la gauche
         if ((x_2 - 15) < (x_1 + 7) and x_2 > x_1 and y_2 < (y_1 + 13) and (y_2 + 13) > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
@@ -129,14 +129,14 @@ def attack_2(x_2, y_2, direction_2):
                 if x_1 > 3 :
                     x_1 = x_1 - 5   
     if direction_2 == ("left", "up"):
-        #pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
+        pyxel.rectb(x_2 - 3, y_2 - 15, 13, 15, 0) # hit boxe de l'attaque ver le haut
         if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 - 15) < (y_1 + 13) and y_2 > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
                 pv_1 = pv_1 - random.randint(10, 20)
                 y_1 = y_1 - 5    
     if direction_2 == ("left", "down"):
-        #pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0) # hit boxe de l'attaque ver le bas
+        pyxel.rectb(x_2 - 3, y_2 + 15, 13, 17, 0) # hit boxe de l'attaque ver le bas
         if ((x_2 - 3) < (x_1 + 7) and (x_2 + 13) > x_1 and (y_2 + 13) < (y_1 + 13) and (y_2 + 30) > y_1):
             if vulnerable_1 == 0 :
                 vulnerable_1 = 5
@@ -366,7 +366,7 @@ def draw() -> None:
             if dx_1 == "left":
                 no_mv1 = no_mv1 + 3   
                 m1= no_mv1 % 60
-                print( no_mv1)
+                #print( no_mv1)
                 if m1 > 50:  
                     pyxel.blt(x_1, y_1, 0, 0, 32, -7, 13,0)
                 elif m1 > 20 :
