@@ -2,6 +2,7 @@ import pyxel
 import random
 pyxel.init(210, 120, fps=60)
 pyxel.load("PYXEL_RESOURCE_FILE.pyxres")
+
 point_1:int =0
 x_1: int = 31
 y_1: int = 90
